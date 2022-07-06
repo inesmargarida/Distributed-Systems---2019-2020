@@ -1,32 +1,28 @@
-# gRPC Tic Tac Toe exercise
+# gRPC TTT - contract
 
-This is the starting point for the gRPC Tic Tac Toe exercise
+This small library contains the protocol buffers (`protobuf`) of the Tic Tac Toe gRPC application.
 
-The project is composed by three modules:
-- [contract](contract/) - protocol buffers definition
-- [server](server/) - implementation of service
-- [client](client/) - invocation of service
-
-See the README for each module.  
-Start at contract, then go to server, and finally go to the client.
+The interface is shared by the server, that implements it, and by the client, that needs it to make remote calls.
 
 
-----
+## Instructions for using Maven
 
-## Authors
+To compile and install:
 
-**Group A54**
+```
+mvn install
+```
 
-Roman Babynyuk [89536](mailto:roman.babynyuk@tecnico.ulisboa.pt)
 
-Inês Correia [89464](mailto:inesmargarida1618@tecnico.ulisboa.pt)
+## To configure the Maven project in Eclipse
 
-Andreia Matos [89413](mailto:andreiamatos@tecnico.ulisboa.pt)
+'File', 'Import...', 'Maven'-'Existing Maven Projects'
 
+'Select root directory' and 'Browse' to the project base folder.
+
+Check that the desired POM is selected and 'Finish'.
 
 
 ----
-
-For help, please contact:
 
 [SD Faculty](mailto:leic-sod@disciplinas.tecnico.ulisboa.pt)

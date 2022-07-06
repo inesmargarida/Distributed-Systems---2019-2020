@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package pt.ulisboa.tecnico.distsys.ttt;
+
+// The following option causes top-level messages, enums, and services to be defined at the package level, 
+// rather than inside an outer class named after the .proto file.
+option java_multiple_files = true;
+
+
+// current board operation
+
+message CurrentBoardRequest {
+  // No arguments for this request.
+}
+
+message CurrentBoardResponse {
+  string board = 1;
+}
+
+
+// play operation
+
+enum PlayResult {
+  UNKNOWN = 0;
+  OUT_OF_BOUNDS = 1;
+  SQUARE_TAKEN = 2;
+  WRONG_TURN = 3;
+  GAME_FINISHED = 4;
+  SUCCESS = 5;
+};
+
+message PlayRequest{
+  int32 row = 1;
+  int32 column = 2;
+  int32 player = 3;
+}
+
+message PlayResponse{
+  PlayResult result = 1;
+}
+
+// check winner operation
+
+message CheckWinnerRequest{
+  //No args
+}
+
+message CheckWinnerResponse{
+  int32 result = 1;
+}
+
+message InfoRequest{
+  int32 player = 1;
+}
+
+message InfoResponse{
+  int32 plays = 1;
+}
+
+
+// service
+
+service TTT {
+  rpc CurrentBoard(CurrentBoardRequest) returns (CurrentBoardResponse);
+  rpc Play(PlayRequest) returns (PlayResponse);
+  rpc CheckWinner(CheckWinnerRequest) returns (CheckWinnerResponse);
+  rpc Info(InfoRequest) returns (InfoResponse);
+}
