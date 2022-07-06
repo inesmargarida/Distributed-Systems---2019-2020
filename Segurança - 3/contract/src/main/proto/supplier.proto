@@ -1,0 +1,44 @@
+// Protocol buffers definition for Supplier
+syntax = "proto3";
+
+package pt.tecnico.supplier.grpc;
+
+option java_multiple_files = true;
+option java_package = "pt.tecnico.supplier.grpc";
+option java_outer_classname = "SupplierProtobuf";
+
+import "google/type/money.proto";
+
+message Signature {
+  string signerId = 1;
+  bytes value = 2;
+  bytes iv = 3;
+  int64 time = 4;
+}
+
+// product information
+message Product {
+  string identifier = 1;
+  string description = 2;
+  int32 quantity = 3;
+  google.type.Money price = 4;
+  float discount = 5;
+}
+
+message ProductsRequest {
+  // empty
+}
+
+message ProductsResponse {
+  string supplierIdentifier = 1;
+  repeated Product product = 2;
+}
+
+message SignedResponse {
+  ProductsResponse response = 1;
+  Signature signature = 2;
+}
+
+service Supplier {
+  rpc listProducts(ProductsRequest) returns (SignedResponse);
+}
